@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="../fonts/icons.css">
+  <link rel="stylesheet" href="../css/quiz.css">
+  <title>Quiz App</title>
+</head>
+<body>
+  <div class="header blue accent-3">
+    <h1 class="logo">Sample Test</h1>
+    <h1>00:00</h1>
+  </div>
+  <section class="row">
+    <div class="left col m3">
+      <div class="card">
+        <div class="card-content">
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+        </div>
+      </div>
+    </div>
+    <div class="main col m9">
+      <div class="question">
+        <div class="card">
+          <div class="card-content">
+            <p>Above we showed you how to layout elements using our grid system. Now we'll show you how to design your layouts so that they look great on all screen sizes ? </p>
+          </div>
+        </div>
+      </div>
+      <div class="answers card">
+        <ul class="collection card-content">
+          <li class="collection-item">
+            <input type="radio" name="options" value="1" id="option1" />
+            <label for="option1">lorem ipsim</label>
+          </li>
+          <li class="collection-item">
+            <input type="radio" name="options" value="2" id="option2" />
+            <label for="option2">lorem ipsim</label>
+          </li>
+          <li class="collection-item">
+            <input type="radio" name="options" value="3" id="option3" />
+            <label for="option3">lorem ipsim</label>
+          </li>
+          <li class="collection-item">
+            <input type="radio" name="options" value="4" id="option4" />
+            <label for="option4">lorem ipsim</label>
+          </li>
+
+        </ul>
+      </div>
+      <div class="bcontainer">
+        <a class="btn wave-light green right">Next<i class=" material-icons right">send</i></a>
+        <a class="btn wave-light teal left">Previous<i class="rotate material-icons left">send</i></a>
+      </div>
+    </div>
+  </section>
+<script>
+  window.$ = window.jQuery = require("jquery")
+  require("../quiz.js")
+  require("materialize-css")
+</script>
+</body>
+</html>
