@@ -1,0 +1,25 @@
+{
+  "name": "electronapp",
+  "version": "1.0.0",
+  "description": "Exam app using electon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rohanhacker/electronAPp.git"
+  },
+  "author": "Youstart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rohanhacker/electronAPp/issues"
+  },
+  "homepage": "https://github.com/Rohanhacker/electronAPp#readme",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "localforage": "^1.4.2",
+    "materialize-css": "^0.97.7",
+    "pickadate": "^3.5.6"
+  }
+}
