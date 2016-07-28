@@ -89,12 +89,13 @@ $(".prev").click(() => {
   prevQuestion();
 });
 
-$(".q-jump").click(() => {
+$(".q-jump").click(function(){
   var id = $(this).data('id');
   count = id;
   loadQuestion(id);
+  return ;
 });
 
-$(".option").change(()=>{
+$(".option").click(()=>{
   console.log(count + ' changed');
 });
