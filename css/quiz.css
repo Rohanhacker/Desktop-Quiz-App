@@ -17,3 +17,6 @@ label {
 .rotate {
   transform: rotate(180deg);
 }
+.btn {
+  margin: 10px;
+}
