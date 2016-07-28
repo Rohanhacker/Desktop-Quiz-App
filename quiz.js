@@ -1,24 +1,20 @@
-localforage.setItem('q1', ['this is the first question','1First option','Second option','Third option','Fourth option'], function(err, value) {
-    // Do other things once the value has been saved.
+var dummyQuestions =
+[{
+  id:1,
+  q:"This is a sample question",
+  o:["option1","option2","option3","option4"],
+  selected:2
+},
+{ id:2, q:"This is a sample question2", o:["option2-1","option2-2","option2-3","option2-4"],  selected:2 } ,
+{ id:3, q:"This is a sample question3", o:["option3-1","option3-2","option3-3","option3-4"],  selected:4 } ,
+{ id:4, q:"This is a sample question4", o:["option4-1","option4-2","option4-3","option4-4"],  selected:2 } ,
+];
 
-});
-
-localforage.setItem('q2', ['this is the second question','2First option','Second option','Third option','Fourth option'], function(err, value) {
-    // Do other things once the value has been saved.
-
-});
-
-localforage.setItem('q3', ['this is the thrid question','3First option','Second option','Third option','Fourth option'], function(err, value) {
-    // Do other things once the value has been saved.
-
-});
-
-localforage.setItem('q4', ['this is the fourth question','4First option','Second option','Third option','Fourth option'], function(err, value) {
-    // Do other things once the value has been saved.
-
-});
-
-const array = ['q1','q2','q3','q4']
+for(i=0;i<dummyQuestions.length;i++){
+  localforage.setItem('q'+(i+1), dummyQuestions[i], function(err,value){
+    console.log(err);
+  });
+}
 
 function shuffle(array) {
   let currentIndex = array.length, temporaryValue, randomIndex
@@ -38,28 +34,67 @@ function shuffle(array) {
 
   return array
 }
-shuffle(array)
-const A = ["q1","q2","q3","q4"]
+
+const Q = ["q1","q2","q3","q4"]
+shuffle(Q)
 const max = 4
-let count = -1
+let count = 0
 
+loadQuestion(count);
+loadQuestionLinks();
 
-const storage = function(array) {
-  count = (count+1)%max
-  localforage.getItem(array[count], function(err, value) {
-    $("a").removeClass("yellow")
-    $("."+A[count]).addClass("yellow")
-    $(".question-content").html(value[0])
-    $(".option1").html(value[1])
-    $(".option2").html(value[2])
-    $(".option3").html(value[3])
-    $(".option4").html(value[4])
-  })
+function loadQuestionLinks(){
+  var str="";
+  for(i=0;i<max;i++){
+    str+= `<a class="btn-floating waves-effect waves-light btn q-jump" data-id="${i}">${i}</a>`;
+  }
+  $(".q-jump-container").html(str);
 }
 
+const nextQuestion = function() {
+  count = (count+1)%max
+  loadQuestion(count);
+}
+const prevQuestion = function(){
+  count = (count+max-1)%max
+  loadQuestion(count);
+}
 
-storage(array)
+function loadQuestion(count){
+  localforage.getItem(Q[count], function(err, value) {
+    $(".q-jump").removeClass("green")
+    $(".q-jump[data-id="+count+"]").addClass("green")
+
+    $(".question-content").html(value.q);
+    var qContainer = $("#q-options");
+    var options = value.o;
+    let optionStr="";
+    for(i=0;i<options.length;i++){
+       optionStr += `
+        <li class="collection-item">
+          <input type="radio" class="option" name="options" value="${i+1}" id="option${i+1}" />
+          <label for="option${i+1}" >${options[i]}</label>
+        </li>
+      `;
+    }
+    qContainer.html(optionStr);
+  });
+}
 
 $(".nxt").click(() => {
-  storage(array)
+  nextQuestion();
+});
+
+$(".prev").click(() => {
+  prevQuestion();
+});
+
+$(".q-jump").click(() => {
+  var id = $(this).data('id');
+  count = id;
+  loadQuestion(id);
+});
+
+$(".option").change(()=>{
+  console.log(count + ' changed');
 });

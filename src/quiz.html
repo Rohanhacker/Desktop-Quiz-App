@@ -15,11 +15,11 @@
   <section class="row">
     <div class="left col m3">
       <div class="card">
-        <div class="card-content">
-          <a class="waves-effect waves-light btn q1">1</a>
-          <a class="waves-effect waves-light btn q2">2</a>
-          <a class="waves-effect waves-light btn q3">3</a>
-          <a class="waves-effect waves-light btn q4">4</a>
+        <div class="card-content q-jump-container">
+          <a class="waves-effect waves-light btn q-jump">1</a>
+          <a class="waves-effect waves-light btn q-jump">2</a>
+          <a class="waves-effect waves-light btn q-jump">3</a>
+          <a class="waves-effect waves-light btn q-jump">4</a>
         </div>
       </div>
     </div>
@@ -32,28 +32,28 @@
         </div>
       </div>
       <div class="answers card">
-        <ul class="collection card-content">
+        <ul id="q-options" class="collection card-content">
           <li class="collection-item">
-            <input type="radio" name="options" value="1" id="option1" />
-            <label for="option1" class="option1"></label>
+            <input type="radio" name="options" value="1" id="option1"  />
+            <label for="option1" class="option"></label>
           </li>
           <li class="collection-item">
             <input type="radio" name="options" value="2" id="option2" />
-            <label for="option2" class="option2"></label>
+            <label for="option2" class="option"></label>
           </li>
           <li class="collection-item">
             <input type="radio" name="options" value="3" id="option3" />
-            <label for="option3" class="option3"></label>
+            <label for="option3" class="option"></label>
           </li>
           <li class="collection-item">
             <input type="radio" name="options" value="4" id="option4" />
-            <label for="option4" class="option4"></label>
+            <label for="option4" class="option"></label>
           </li>
 
         </ul>
       </div>
       <div class="bcontainer">
-        <a class="btn waves-effect waves-light green right nxt">Next<i class=" material-icons right">send</i></a>
+        <a class="btn waves-effect waves-light teal right nxt">Next<i class=" material-icons right">send</i></a>
         <a class="btn waves-effect waves-light teal left prev">Previous<i class="rotate material-icons left">send</i></a>
       </div>
     </div>
