@@ -5,9 +5,9 @@ var dummyQuestions =
   o:["option1","option2","option3","option4"],
   selected:2
 },
-{ id:2, q:"This is a sample question2", o:["option2-1","option2-2","option2-3","option2-4"],  selected:2 } ,
-{ id:3, q:"This is a sample question3", o:["option3-1","option3-2","option3-3","option3-4"],  selected:4 } ,
-{ id:4, q:"This is a sample question4", o:["option4-1","option4-2","option4-3","option4-4"],  selected:2 } ,
+{ id:2, q:"This is a sample question2", o:["option2-1","option2-2","option2-3","option2-4"],  selected:-1 } ,
+{ id:3, q:"This is a sample question3", o:["option3-1","option3-2","option3-3","option3-4"],  selected:-1 } ,
+{ id:4, q:"This is a sample question4", o:["option4-1","option4-2","option4-3","option4-4"],  selected:-1 } ,
 ];
 
 for(i=0;i<dummyQuestions.length;i++){
@@ -46,7 +46,7 @@ loadQuestionLinks();
 function loadQuestionLinks(){
   var str="";
   for(i=0;i<max;i++){
-    str+= `<a class="btn-floating waves-effect waves-light btn q-jump" data-id="${i}">${i}</a>`;
+    str+= `<a class="btn-floating waves-effect waves-light btn q-jump green accent-4" data-id="${i}">${i}</a>`;
   }
   $(".q-jump-container").html(str);
 }
@@ -70,9 +70,14 @@ function loadQuestion(count){
     var options = value.o;
     let optionStr="";
     for(i=0;i<options.length;i++){
+      let str="";
+      console.log(value.selected);
+      if(value.selected == i+1) {
+        str="checked";
+      }
        optionStr += `
         <li class="collection-item">
-          <input type="radio" class="option" name="options" value="${i+1}" id="option${i+1}" />
+          <input type="radio" class="option" name="options" value="${i+1}" id="option${i+1}" ${str}  />
           <label for="option${i+1}" >${options[i]}</label>
         </li>
       `;
@@ -96,6 +101,20 @@ $(".q-jump").click(function(){
   return ;
 });
 
-$(".option").click(()=>{
-  console.log(count + ' changed');
+$(".answers").on('click','.option',()=>{
+  localforage.getItem(Q[count],(err,value) => {
+    value.selected = $(".option:checked").val()
+    console.log($(".option:checked").val());
+    localforage.setItem(Q[count],value,(err,value) => {
+      if(err) {
+//        console.log(err);
+      }
+//      console.log(value);
+    })
+  })
+//  console.log(count + ' changed');
 });
+
+$(".submit-btn").click(() => {
+  window.location = "results.html";
+})
