@@ -3,11 +3,15 @@ var dummyQuestions =
   id:1,
   q:"This is a sample question",
   o:["option1","option2","option3","option4"],
-  selected:2
+  selected:2,
+  shouldbe: 1
 },
-{ id:2, q:"This is a sample question2", o:["option2-1","option2-2","option2-3","option2-4"],  selected:-1 } ,
-{ id:3, q:"This is a sample question3", o:["option3-1","option3-2","option3-3","option3-4"],  selected:-1 } ,
-{ id:4, q:"This is a sample question4", o:["option4-1","option4-2","option4-3","option4-4"],  selected:-1 } ,
+{ id:2, q:"This is a sample question2", o:["option2-1","option2-2","option2-3","option2-4"],  selected:-1 ,
+shouldbe: 2} ,
+{ id:3, q:"This is a sample question3", o:["option3-1","option3-2","option3-3","option3-4"],  selected:-1 ,
+shouldbe: 4} ,
+{ id:4, q:"This is a sample question4", o:["option4-1","option4-2","option4-3","option4-4"],  selected:-1 ,
+shouldbe: 4} ,
 ];
 
 for(i=0;i<dummyQuestions.length;i++){

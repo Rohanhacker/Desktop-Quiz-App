@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="../fonts/icons.css">
+  <link rel="stylesheet" href="../css/quiz.css">
+  <title>Quiz App</title>
+</head>
+<body>
+  <div class="header blue accent-3">
+    <h1 class="logo">Sample Test</h1>
+  </div>
+  <section class="container">
+    <div class="row">
+      <div class="offset-m2 col m8">
+        <h1 class="center resulthead">
+          Results
+        </h1>
+        <div class="card">
+          <div class="card-content">
+            <table class="highlight centered">
+              <thead>
+                <tr>
+                  <th >Correct</th>
+                  <th >Wrong</th>
+                  <th >Not Attempted</th>
+                  <th >Total Marks</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="correct"></td>
+                  <td class="wrong"></td>
+                  <td class="attempted"></td>
+                  <td class="total"></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<script>
+  window.$ = window.jQuery = require("jquery")
+  window.localforage = require("localforage")
+  require("../results.js")
+  require("materialize-css")
+</script>
+</body>
+</html>
