@@ -10,7 +10,7 @@
 <body>
   <div class="header blue accent-3">
     <h1 class="logo">Sample Test</h1>
-    <h1>00:00</h1>
+    <h1 id="timer">00:00</h1>
   </div>
   <section class="row">
     <div class="left col m3">
@@ -66,6 +66,7 @@
 <script>
   window.$ = window.jQuery = require("jquery")
   window.localforage = require("localforage")
+  require("../js/timer.js")
   require("../quiz.js")
   require("materialize-css")
 </script>

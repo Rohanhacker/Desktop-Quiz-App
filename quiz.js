@@ -122,3 +122,11 @@ $(".answers").on('click','.option',()=>{
 $(".submit-btn").click(() => {
   window.location = "results.html";
 })
+$("#timer").timer({
+    countdown: true,
+    duration: '1m',
+    format: '%H:%M:%S',
+    callback: function() {
+        window.location = "results.html"
+    }
+});
