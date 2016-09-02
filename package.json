@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/Rohanhacker/electronAPp#readme",
   "dependencies": {
+    "deasync": "^0.1.7",
+    "google-auth-library": "^0.9.8",
+    "googleapis": "^12.4.0",
     "jquery": "^3.1.0",
     "localforage": "^1.4.2",
     "materialize-css": "^0.97.7",

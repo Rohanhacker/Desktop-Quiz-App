@@ -13,9 +13,6 @@ localforage.iterate(function(value, key, iterationNumber) {
           wrong += 1
         }
 }).then(function() {
-  console.log(correct);
-  console.log(wrong);
-  console.log(notattempted);
   $(".correct").html(correct)
   $(".wrong").html(wrong)
   $(".attempted").html(notattempted)
