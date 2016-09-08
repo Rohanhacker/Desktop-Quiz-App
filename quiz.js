@@ -63,8 +63,11 @@ function main() {
     shuffle(Q)
     const max = 15
     let count = 0
+    var user = {
+      "voice":false
+    };
 
-    loadQuestion(count);
+    //loadQuestion(count);
     loadQuestionLinks();
 
     function loadQuestionLinks(){
@@ -83,17 +86,25 @@ function main() {
       count = (count+max-1)%max
       loadQuestion(count);
     }
-
+    localforage.getItem('user',function(err,value) {
+      console.log(value);
+      user = (value);
+      loadQuestion(count);
+    });
     function loadQuestion(count){
       localforage.getItem(Q[count], function(err, value) {
         $(".q-jump").removeClass("green")
         $(".q-jump[data-id="+count+"]").addClass("green")
         $(".question-content").html(value.q);
+        console.log(user.voice);
+        let say = "";
+        say += value.q;
         var qContainer = $("#q-options");
         var options = value.o;
         let optionStr="";
         for(i=0;i<options.length;i++){
           let str="";
+          say += String.fromCharCode(65+i) + '.' +(options[i]) + ' .';
 //          console.log(value.selected);
           if(value.selected == i+1) {
             str="checked";
@@ -106,8 +117,71 @@ function main() {
           `;
         }
         qContainer.html(optionStr);
+        console.log(say);
+        if (user.voice) {
+          responsiveVoice.speak(say);
+        }
       });
     }
+    // to refacrtor
+    const checker = () => {
+      if(responsiveVoice.isPlaying()) {
+          recognition.stop();
+        }
+       else {
+          recognition.start();
+      }
+    }
+  //  setInterval(checker,3000);
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.start()
+    recognition.onresult = function(event) {
+    var text = '';
+    var interim_transcript = "";
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        text += event.results[i][0].transcript;
+      } else {
+        interim_transcript += event.results[i][0].transcript;
+      }
+    }
+
+    // do here
+    let temptext = text.toLowerCase();
+    console.log(temptext);
+    if(temptext.match("next")!=null) {
+      console.log(temptext);
+      $(".nxt").click();
+    }
+    else if(temptext.match("previous")!=null) {
+      $(".prev").click();
+    }
+    else if(temptext.match("b")!=null || temptext.match("2")!=null) {
+      console.log(temptext);
+      $("input[value=2]").click();
+    }
+    else if(temptext.match("c")!=null || temptext.match("3")!=null) {
+      console.log(temptext);
+      $("input[value=3]").click();
+    }
+    if(temptext.match("d")!=null || temptext.match("4")!=null) {
+      console.log(temptext);
+      $("input[value=4]").click();
+    }
+    else if(temptext.match("a")!=null || temptext.match("1")!=null || temptext.match("one")!=null) {
+      console.log(temptext);
+      $("input[value=1]").click();
+    }
+    else if(temptext.match("submit")!=null) {
+      console.log(temptext);
+      $("input[value=1]").click();
+    }
+    // done here
+  };
+
+  recognition.onend = (event) => recognition.start();
 
     $(".nxt").click(() => {
       nextQuestion();

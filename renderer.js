@@ -5,6 +5,29 @@ const {ipcRenderer} = require('electron')
 
 $(".start").on("click",(e) => {
   e.preventDefault();
-  console.log("sahi hai");
-  ipcRenderer.send("test")
+  obj = {
+    "name" : name,
+    "number": number,
+    "voice": voice
+  };
+  if(number && name) {
+    localforage.setItem('user', obj,(err,value)=> {
+      console.log(value);
+    });
+  }
+  if(obj.name && obj.number) {
+    ipcRenderer.send("test")
+  }
 })
+var name;
+var number,voice=false;
+var obj;
+$("#name").change(() => {
+    name = ($("#name").val());
+  });
+$("#number").change(() => {
+      number = ($("#number").val());
+    });
+$("#voice").change(() => {
+  voice = ($("#voice").prop("checked"));
+});

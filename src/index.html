@@ -8,11 +8,45 @@
 </head>
 <body>
   <div class="valign-wrapper a">
-    <a class="waves-effect waves-light blue accent-3 btn-large start">Start Quiz</a>
+      <div class="row">
+       <form class="col s12">
+         <div class="row">
+           <div class="input-field col s8 offset-s2">
+             <input  id="name" type="text" class="validate">
+             <label for="name">Name</label>
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="input-field col s8 offset-s2">
+             <input id="number" type="text" class="validate">
+             <label for="number">Phone</label>
+           </div>
+         </div>
+         <div class="row">
+           <div class="col s8 offset-s2">
+             <p>
+               <input type="checkbox" id="voice" />
+               <label for="voice">Voice</label>
+             </p>
+           </div>
+         </div>
+       </form>
+       </div>
+       <div class="row">
+         <div class="col s12">
+           <a class="waves-effect waves-light blue accent-3 btn-large start">Start Quiz</a>
+         </div>
+       </div>
+     </div>
+
   </div>
+
+
 </body>
 <script>
   window.$ = window.jQuery = require("jquery")
+  window.localforage = require("localforage")
   require("../renderer.js")
   require("materialize-css")
 </script>
