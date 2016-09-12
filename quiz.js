@@ -117,7 +117,7 @@ function main() {
           `;
         }
         qContainer.html(optionStr);
-        console.log(say);
+        console.log();
         if (user.voice) {
           responsiveVoice.speak(say);
         }

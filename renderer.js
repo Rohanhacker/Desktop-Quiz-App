@@ -2,6 +2,9 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 const {ipcRenderer} = require('electron')
+localforage.removeItem('user', function(err) {
+  console.log("clear");
+});
 
 $(".start").on("click",(e) => {
   e.preventDefault();
