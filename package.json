@@ -18,13 +18,13 @@
   },
   "homepage": "https://github.com/Rohanhacker/electronAPp#readme",
   "dependencies": {
-    "deasync": "^0.1.7",
-    "firebase": "^3.3.0",
+    "electron-prebuilt": "^1.0.0",
     "google-auth-library": "^0.9.8",
     "googleapis": "^12.4.0",
     "jquery": "^3.1.0",
     "localforage": "^1.4.2",
     "materialize-css": "^0.97.7",
-    "pickadate": "^3.5.6"
+    "pickadate": "^3.5.6",
+    "sendgrid": "^4.3.0"
   }
 }

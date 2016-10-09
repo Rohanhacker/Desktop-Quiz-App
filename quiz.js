@@ -1,8 +1,8 @@
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
-
 // https://docs.google.com/spreadsheets/d/1U-kOR1u5QQ5AbEDY0TgRuQ2tbSKopER8ZRxBmcivBbY/edit
+
 var dummyQuestions = [];
 function main() {
   var sheets = google.sheets('v4');
@@ -117,71 +117,44 @@ function main() {
           `;
         }
         qContainer.html(optionStr);
-        console.log();
+        /////////// ddddddddddddddd
+        var recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.onresult = function(event) {
+            var interim_transcript = '';
+            var final_transcript = '';
+            for (var i = event.resultIndex; i < event.results.length; ++i) {
+              if (event.results[i].isFinal) {
+                final_transcript += event.results[i][0].transcript;
+              } else {
+                interim_transcript += event.results[i][0].transcript;
+              }
+            }
+            console.log(final_transcript);
+            let text = final_transcript.toLowerCase();
+            if(text.search("a") != -1 || text.search("one") != -1 || text.search(1) != -1) {
+              $("#option1").click();
+            } else if(text.search("b") != -1 || text.search("two") != -1 || text.search(2) != -1) {
+              $("#option2").click();
+            } else if(text.search("c") != -1 || text.search("three") != -1 || text.search(3) != -1) {
+              $("#option3").click();
+            } else if(text.search("d") != -1 || text.search("four") != -1 || text.search(4) != -1) {
+              $("#option4").click();
+            } else if(text.search("next")!=-1) {
+              $(".nxt").click();
+            } else if(text.search("previous") != -1) {
+              $(".prev").click();
+            }
+          };
+          recognition.start();
+        ////////////
         if (user.voice) {
           responsiveVoice.speak(say);
         }
       });
     }
-    // to refacrtor
-    const checker = () => {
-      if(responsiveVoice.isPlaying()) {
-          recognition.stop();
-        }
-       else {
-          recognition.start();
-      }
-    }
-  //  setInterval(checker,3000);
-    const recognition = new webkitSpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = true;
-    recognition.start()
-    recognition.onresult = function(event) {
-    var text = '';
-    var interim_transcript = "";
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
-      if (event.results[i].isFinal) {
-        text += event.results[i][0].transcript;
-      } else {
-        interim_transcript += event.results[i][0].transcript;
-      }
-    }
 
-    // do here
-    let temptext = text.toLowerCase();
-    console.log(temptext);
-    if(temptext.match("next")!=null) {
-      console.log(temptext);
-      $(".nxt").click();
-    }
-    else if(temptext.match("previous")!=null) {
-      $(".prev").click();
-    }
-    else if(temptext.match("b")!=null || temptext.match("2")!=null) {
-      console.log(temptext);
-      $("input[value=2]").click();
-    }
-    else if(temptext.match("c")!=null || temptext.match("3")!=null) {
-      console.log(temptext);
-      $("input[value=3]").click();
-    }
-    if(temptext.match("d")!=null || temptext.match("4")!=null) {
-      console.log(temptext);
-      $("input[value=4]").click();
-    }
-    else if(temptext.match("a")!=null || temptext.match("1")!=null || temptext.match("one")!=null) {
-      console.log(temptext);
-      $("input[value=1]").click();
-    }
-    else if(temptext.match("submit")!=null) {
-      console.log(temptext);
-      $("input[value=1]").click();
-    }
-    // done here
-  };
-
-  recognition.onend = (event) => recognition.start();
 
     $(".nxt").click(() => {
       nextQuestion();
