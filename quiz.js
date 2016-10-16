@@ -118,36 +118,71 @@ function main() {
         }
         qContainer.html(optionStr);
         /////////// ddddddddddddddd
-        var recognition = new webkitSpeechRecognition();
-        recognition.continuous = true;
-        recognition.interimResults = true;
-        recognition.onresult = function(event) {
-            var interim_transcript = '';
-            var final_transcript = '';
-            for (var i = event.resultIndex; i < event.results.length; ++i) {
-              if (event.results[i].isFinal) {
-                final_transcript += event.results[i][0].transcript;
-              } else {
-                interim_transcript += event.results[i][0].transcript;
-              }
-            }
-            console.log(final_transcript);
-            let text = final_transcript.toLowerCase();
-            if(text.search("a") != -1 || text.search("one") != -1 || text.search(1) != -1) {
-              $("#option1").click();
-            } else if(text.search("b") != -1 || text.search("two") != -1 || text.search(2) != -1) {
-              $("#option2").click();
-            } else if(text.search("c") != -1 || text.search("three") != -1 || text.search(3) != -1) {
-              $("#option3").click();
-            } else if(text.search("d") != -1 || text.search("four") != -1 || text.search(4) != -1) {
-              $("#option4").click();
-            } else if(text.search("next")!=-1) {
+        const command1 = {
+          'next': function() {
               $(".nxt").click();
-            } else if(text.search("previous") != -1) {
+            }
+        };
+        const command2 = {
+          'previous': function() {
               $(".prev").click();
             }
-          };
-          recognition.start();
+        };
+        const command3 = {
+          'A': function() {
+              $("#option1").click();
+            }
+        };
+        const command4 = {
+          'one': function() {
+              $("#option1").click();
+            }
+        };
+        const command5 = {
+          'B': function() {
+              $("#option2").click();
+            }
+        };
+        const command6 = {
+          'C': function() {
+              $("#option3").click();
+            }
+        };
+        const command7 = {
+          'see': function() {
+              $("#option3").click();
+            }
+        };
+        const command8 = {
+          'D': function() {
+              $("#option4").click();
+            }
+        };
+        const command9 = {
+          'match': function() {
+              $(".nxt").click();
+            }
+        };
+        const command10 = {
+          'net': function() {
+              $(".nxt").click();
+            }
+        };
+
+  // Add our commands to annyang
+  annyang.addCommands(command1);
+  annyang.addCommands(command2);
+  annyang.addCommands(command3);
+  annyang.addCommands(command4);
+  annyang.addCommands(command5);
+  annyang.addCommands(command6);
+  annyang.addCommands(command7);
+  annyang.addCommands(command8);
+  annyang.addCommands(command9);
+  annyang.addCommands(command10);
+
+  // Start listening.
+  annyang.start();
         ////////////
         if (user.voice) {
           responsiveVoice.speak(say);

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Rohanhacker/electronAPp#readme",
   "dependencies": {
+    "annyang": "^2.6.0",
     "electron-prebuilt": "^1.0.0",
     "google-auth-library": "^0.9.8",
     "googleapis": "^12.4.0",
