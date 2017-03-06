@@ -459,6 +459,44 @@ function Toolresults(options) { // eslint-disable-line
           },
 
           /**
+           * toolresults.projects.histories.executions.steps.getPerfMetricsSummary
+           *
+           * @desc Retrieves a PerfMetricsSummary.  May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary does not exist
+           *
+           * @alias toolresults.projects.histories.executions.steps.getPerfMetricsSummary
+           * @memberOf! toolresults(v1beta3)
+           *
+           * @param {object} params Parameters for request
+           * @param {string} params.executionId A tool results execution ID.
+           * @param {string} params.historyId A tool results history ID.
+           * @param {string} params.projectId The cloud project
+           * @param {string} params.stepId A tool results step ID.
+           * @param {object} [options] Optionally override request options, such as `url`, `method`, and `encoding`.
+           * @param {callback} callback The callback that handles the response.
+           * @return {object} Request object
+           */
+          getPerfMetricsSummary: function (params, options, callback) {
+            if (typeof options === 'function') {
+              callback = options;
+              options = {};
+            }
+            options || (options = {});
+
+            var parameters = {
+              options: utils.extend({
+                url: 'https://www.googleapis.com/toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary',
+                method: 'GET'
+              }, options),
+              params: params,
+              requiredParams: ['projectId', 'historyId', 'executionId', 'stepId'],
+              pathParams: ['executionId', 'historyId', 'projectId', 'stepId'],
+              context: self
+            };
+
+            return createAPIRequest(parameters, callback);
+          },
+
+          /**
            * toolresults.projects.histories.executions.steps.list
            *
            * @desc Lists Steps for a given Execution.  The steps are sorted by creation_time in descending order. The step_id key will be used to order the steps with the same creation_time.  May return any of the following canonical error codes:  - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if the containing Execution does not exist
@@ -576,6 +614,252 @@ function Toolresults(options) { // eslint-disable-line
             return createAPIRequest(parameters, callback);
           },
 
+          perfMetricsSummary: {
+
+            /**
+             * toolresults.projects.histories.executions.steps.perfMetricsSummary.create
+             *
+             * @desc Creates a PerfMetricsSummary resource.  May return any of the following error code(s): - ALREADY_EXISTS - A PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
+             *
+             * @alias toolresults.projects.histories.executions.steps.perfMetricsSummary.create
+             * @memberOf! toolresults(v1beta3)
+             *
+             * @param {object} params Parameters for request
+             * @param {string} params.executionId A tool results execution ID.
+             * @param {string} params.historyId A tool results history ID.
+             * @param {string} params.projectId The cloud project
+             * @param {string} params.stepId A tool results step ID.
+             * @param {toolresults(v1beta3).PerfMetricsSummary} params.resource Request body data
+             * @param {object} [options] Optionally override request options, such as `url`, `method`, and `encoding`.
+             * @param {callback} callback The callback that handles the response.
+             * @return {object} Request object
+             */
+            create: function (params, options, callback) {
+              if (typeof options === 'function') {
+                callback = options;
+                options = {};
+              }
+              options || (options = {});
+
+              var parameters = {
+                options: utils.extend({
+                  url: 'https://www.googleapis.com/toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary',
+                  method: 'POST'
+                }, options),
+                params: params,
+                requiredParams: ['projectId', 'historyId', 'executionId', 'stepId'],
+                pathParams: ['executionId', 'historyId', 'projectId', 'stepId'],
+                context: self
+              };
+
+              return createAPIRequest(parameters, callback);
+            }
+          },
+
+          perfSampleSeries: {
+
+            /**
+             * toolresults.projects.histories.executions.steps.perfSampleSeries.create
+             *
+             * @desc Creates a PerfSampleSeries.  May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
+             *
+             * @alias toolresults.projects.histories.executions.steps.perfSampleSeries.create
+             * @memberOf! toolresults(v1beta3)
+             *
+             * @param {object} params Parameters for request
+             * @param {string} params.executionId A tool results execution ID.
+             * @param {string} params.historyId A tool results history ID.
+             * @param {string} params.projectId The cloud project
+             * @param {string} params.stepId A tool results step ID.
+             * @param {toolresults(v1beta3).PerfSampleSeries} params.resource Request body data
+             * @param {object} [options] Optionally override request options, such as `url`, `method`, and `encoding`.
+             * @param {callback} callback The callback that handles the response.
+             * @return {object} Request object
+             */
+            create: function (params, options, callback) {
+              if (typeof options === 'function') {
+                callback = options;
+                options = {};
+              }
+              options || (options = {});
+
+              var parameters = {
+                options: utils.extend({
+                  url: 'https://www.googleapis.com/toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries',
+                  method: 'POST'
+                }, options),
+                params: params,
+                requiredParams: ['projectId', 'historyId', 'executionId', 'stepId'],
+                pathParams: ['executionId', 'historyId', 'projectId', 'stepId'],
+                context: self
+              };
+
+              return createAPIRequest(parameters, callback);
+            },
+
+            /**
+             * toolresults.projects.histories.executions.steps.perfSampleSeries.get
+             *
+             * @desc Gets a PerfSampleSeries.  May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist
+             *
+             * @alias toolresults.projects.histories.executions.steps.perfSampleSeries.get
+             * @memberOf! toolresults(v1beta3)
+             *
+             * @param {object} params Parameters for request
+             * @param {string} params.executionId A tool results execution ID.
+             * @param {string} params.historyId A tool results history ID.
+             * @param {string} params.projectId The cloud project
+             * @param {string} params.sampleSeriesId A sample series id
+             * @param {string} params.stepId A tool results step ID.
+             * @param {object} [options] Optionally override request options, such as `url`, `method`, and `encoding`.
+             * @param {callback} callback The callback that handles the response.
+             * @return {object} Request object
+             */
+            get: function (params, options, callback) {
+              if (typeof options === 'function') {
+                callback = options;
+                options = {};
+              }
+              options || (options = {});
+
+              var parameters = {
+                options: utils.extend({
+                  url: 'https://www.googleapis.com/toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}',
+                  method: 'GET'
+                }, options),
+                params: params,
+                requiredParams: ['projectId', 'historyId', 'executionId', 'stepId', 'sampleSeriesId'],
+                pathParams: ['executionId', 'historyId', 'projectId', 'sampleSeriesId', 'stepId'],
+                context: self
+              };
+
+              return createAPIRequest(parameters, callback);
+            },
+
+            /**
+             * toolresults.projects.histories.executions.steps.perfSampleSeries.list
+             *
+             * @desc Lists PerfSampleSeries for a given Step.  The request provides an optional filter which specifies one or more PerfMetricsType to include in the result; if none returns all. The resulting PerfSampleSeries are sorted by ids.  May return any of the following canonical error codes: - NOT_FOUND - The containing Step does not exist
+             *
+             * @alias toolresults.projects.histories.executions.steps.perfSampleSeries.list
+             * @memberOf! toolresults(v1beta3)
+             *
+             * @param {object} params Parameters for request
+             * @param {string} params.executionId A tool results execution ID.
+             * @param {string=} params.filter Specify one or more PerfMetricType values such as CPU to filter the result
+             * @param {string} params.historyId A tool results history ID.
+             * @param {string} params.projectId The cloud project
+             * @param {string} params.stepId A tool results step ID.
+             * @param {object} [options] Optionally override request options, such as `url`, `method`, and `encoding`.
+             * @param {callback} callback The callback that handles the response.
+             * @return {object} Request object
+             */
+            list: function (params, options, callback) {
+              if (typeof options === 'function') {
+                callback = options;
+                options = {};
+              }
+              options || (options = {});
+
+              var parameters = {
+                options: utils.extend({
+                  url: 'https://www.googleapis.com/toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries',
+                  method: 'GET'
+                }, options),
+                params: params,
+                requiredParams: ['projectId', 'historyId', 'executionId', 'stepId'],
+                pathParams: ['executionId', 'historyId', 'projectId', 'stepId'],
+                context: self
+              };
+
+              return createAPIRequest(parameters, callback);
+            },
+
+            samples: {
+
+              /**
+               * toolresults.projects.histories.executions.steps.perfSampleSeries.samples.batchCreate
+               *
+               * @desc Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through repeated calls to this method in order to split up a large request payload - duplicates and existing timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements successfully inserted is returned in the response (omits items which already existed in the database).  May return any of the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does not exist
+               *
+               * @alias toolresults.projects.histories.executions.steps.perfSampleSeries.samples.batchCreate
+               * @memberOf! toolresults(v1beta3)
+               *
+               * @param {object} params Parameters for request
+               * @param {string} params.executionId A tool results execution ID.
+               * @param {string} params.historyId A tool results history ID.
+               * @param {string} params.projectId The cloud project
+               * @param {string} params.sampleSeriesId A sample series id
+               * @param {string} params.stepId A tool results step ID.
+               * @param {toolresults(v1beta3).BatchCreatePerfSamplesRequest} params.resource Request body data
+               * @param {object} [options] Optionally override request options, such as `url`, `method`, and `encoding`.
+               * @param {callback} callback The callback that handles the response.
+               * @return {object} Request object
+               */
+              batchCreate: function (params, options, callback) {
+                if (typeof options === 'function') {
+                  callback = options;
+                  options = {};
+                }
+                options || (options = {});
+
+                var parameters = {
+                  options: utils.extend({
+                    url: 'https://www.googleapis.com/toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate',
+                    method: 'POST'
+                  }, options),
+                  params: params,
+                  requiredParams: ['projectId', 'historyId', 'executionId', 'stepId', 'sampleSeriesId'],
+                  pathParams: ['executionId', 'historyId', 'projectId', 'sampleSeriesId', 'stepId'],
+                  context: self
+                };
+
+                return createAPIRequest(parameters, callback);
+              },
+
+              /**
+               * toolresults.projects.histories.executions.steps.perfSampleSeries.samples.list
+               *
+               * @desc Lists the Performance Samples of a given Sample Series - The list results are sorted by timestamps ascending - The default page size is 500 samples; and maximum size allowed 5000 - The response token indicates the last returned PerfSample timestamp - When the results size exceeds the page size, submit a subsequent request including the page token to return the rest of the samples up to the page limit  May return any of the following canonical error codes: - OUT_OF_RANGE - The specified request page_token is out of valid range - NOT_FOUND - The containing PerfSampleSeries does not exist
+               *
+               * @alias toolresults.projects.histories.executions.steps.perfSampleSeries.samples.list
+               * @memberOf! toolresults(v1beta3)
+               *
+               * @param {object} params Parameters for request
+               * @param {string} params.executionId A tool results execution ID.
+               * @param {string} params.historyId A tool results history ID.
+               * @param {integer=} params.pageSize The default page size is 500 samples, and the maximum size is 5000. If the page_size is greater than 5000, the effective page size will be 5000
+               * @param {string=} params.pageToken Optional, the next_page_token returned in the previous response
+               * @param {string} params.projectId The cloud project
+               * @param {string} params.sampleSeriesId A sample series id
+               * @param {string} params.stepId A tool results step ID.
+               * @param {object} [options] Optionally override request options, such as `url`, `method`, and `encoding`.
+               * @param {callback} callback The callback that handles the response.
+               * @return {object} Request object
+               */
+              list: function (params, options, callback) {
+                if (typeof options === 'function') {
+                  callback = options;
+                  options = {};
+                }
+                options || (options = {});
+
+                var parameters = {
+                  options: utils.extend({
+                    url: 'https://www.googleapis.com/toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples',
+                    method: 'GET'
+                  }, options),
+                  params: params,
+                  requiredParams: ['projectId', 'historyId', 'executionId', 'stepId', 'sampleSeriesId'],
+                  pathParams: ['executionId', 'historyId', 'projectId', 'sampleSeriesId', 'stepId'],
+                  context: self
+                };
+
+                return createAPIRequest(parameters, callback);
+              }
+            }
+          },
+
           thumbnails: {
 
             /**
@@ -637,6 +921,34 @@ For URLs which use the scheme `http`, `https`, or no scheme, the following restr
 Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
 * @property {string} value Must be a valid serialized protocol buffer of the above specified type.
 */
+/**
+ * @typedef BasicPerfSampleSeries
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {string} perfMetricType 
+ * @property {string} perfUnit 
+ * @property {string} sampleSeriesLabel 
+ */
+/**
+ * @typedef BatchCreatePerfSamplesRequest
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {toolresults(v1beta3).PerfSample[]} perfSamples The set of PerfSamples to create should not include existing timestamps
+ */
+/**
+ * @typedef BatchCreatePerfSamplesResponse
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {toolresults(v1beta3).PerfSample[]} perfSamples 
+ */
+/**
+ * @typedef CPUInfo
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {string} cpuProcessor description of the device processor ie &#39;1.8 GHz hexa core 64-bit ARMv8-A&#39;
+ * @property {number} cpuSpeedInGhz the CPU clock speed in GHz
+ * @property {integer} numberOfCores the number of CPU cores
+ */
 /**
  * @typedef Duration
  * @memberOf! toolresults(v1beta3)
@@ -766,6 +1078,19 @@ Will only be set if there are more histories to fetch.
 Tokens are valid for up to one hour from the time of the first list request. For instance, if you make a list request at 1PM and use the token from this first request 10 minutes later, the token from this second response will only be valid for 50 minutes.
 */
 /**
+ * @typedef ListPerfSampleSeriesResponse
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {toolresults(v1beta3).PerfSampleSeries[]} perfSampleSeries The resulting PerfSampleSeries sorted by id
+ */
+/**
+ * @typedef ListPerfSamplesResponse
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {string} nextPageToken Optional, returned if result size exceeds the page size specified in the request (or the default page size, 500, if unspecified). It indicates the last sample timestamp to be used as page_token in subsequent request
+ * @property {toolresults(v1beta3).PerfSample[]} perfSamples 
+ */
+/**
  * @typedef ListStepThumbnailsResponse
  * @memberOf! toolresults(v1beta3)
  * @type object
@@ -785,6 +1110,13 @@ Images are returned in a deterministic order; they are ordered by these factors,
 If set, indicates that there are more steps to read, by calling list again with this value in the page_token field.
 * @property {toolresults(v1beta3).Step[]} steps Steps.
 */
+/**
+ * @typedef MemoryInfo
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {string} memoryCapInKibibyte Maximum memory that can be allocated to the process in KiB
+ * @property {string} memoryTotalInKibibyte Total memory available on the device in KiB
+ */
 /**
  * @typedef Outcome
  * @memberOf! toolresults(v1beta3)
@@ -813,6 +1145,42 @@ Optional
 
 Required
 */
+/**
+ * @typedef PerfEnvironment
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {toolresults(v1beta3).CPUInfo} cpuInfo CPU related environment info
+ * @property {toolresults(v1beta3).MemoryInfo} memoryInfo Memory related environment info
+ */
+/**
+ * @typedef PerfMetricsSummary
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {string} executionId A tool results execution ID.
+ * @property {string} historyId A tool results history ID.
+ * @property {toolresults(v1beta3).PerfEnvironment} perfEnvironment Describes the environment in which the performance metrics were collected
+ * @property {string[]} perfMetrics Set of resource collected
+ * @property {string} projectId The cloud project
+ * @property {string} stepId A tool results step ID.
+ */
+/**
+ * @typedef PerfSample
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {toolresults(v1beta3).Timestamp} sampleTime Timestamp of collection
+ * @property {number} value Value observed
+ */
+/**
+ * @typedef PerfSampleSeries
+ * @memberOf! toolresults(v1beta3)
+ * @type object
+ * @property {toolresults(v1beta3).BasicPerfSampleSeries} basicPerfSampleSeries Basic series represented by a line chart
+ * @property {string} executionId A tool results execution ID.
+ * @property {string} historyId A tool results history ID.
+ * @property {string} projectId The cloud project
+ * @property {string} sampleSeriesId A sample series id
+ * @property {string} stepId A tool results step ID.
+ */
 /**
  * @typedef ProjectSettings
  * @memberOf! toolresults(v1beta3)

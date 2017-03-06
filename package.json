@@ -19,9 +19,9 @@
   "homepage": "https://github.com/Rohanhacker/electronAPp#readme",
   "dependencies": {
     "annyang": "^2.6.0",
-    "electron-prebuilt": "^1.0.0",
+    "electron": "^1.6.1",
     "google-auth-library": "^0.9.8",
-    "googleapis": "^12.4.0",
+    "googleapis": "latest",
     "jquery": "^3.1.0",
     "localforage": "^1.4.2",
     "materialize-css": "^0.97.7",

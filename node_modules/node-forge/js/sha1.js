@@ -157,16 +157,16 @@ sha1.create = function() {
 
     // serialize message length in bits in big-endian order; since length
     // is stored in bytes we multiply by 8 and add carry from next int
-    var messageLength = forge.util.createBuffer();
     var next, carry;
     var bits = md.fullMessageLength[0] * 8;
-    for(var i = 0; i < md.fullMessageLength.length; ++i) {
+    for(var i = 0; i < md.fullMessageLength.length - 1; ++i) {
       next = md.fullMessageLength[i + 1] * 8;
       carry = (next / 0x100000000) >>> 0;
       bits += carry;
       finalBlock.putInt32(bits >>> 0);
-      bits = next;
+      bits = next >>> 0;
     }
+    finalBlock.putInt32(bits);
 
     var s2 = {
       h0: _state.h0,
@@ -235,7 +235,8 @@ function _update(s, w, bytes) {
       t = ((a << 5) | (a >>> 27)) + f + e + 0x5A827999 + t;
       e = d;
       d = c;
-      c = (b << 30) | (b >>> 2);
+      // `>>> 0` necessary to avoid iOS/Safari 10 optimization bug
+      c = ((b << 30) | (b >>> 2)) >>> 0;
       b = a;
       a = t;
     }
@@ -247,7 +248,8 @@ function _update(s, w, bytes) {
       t = ((a << 5) | (a >>> 27)) + f + e + 0x5A827999 + t;
       e = d;
       d = c;
-      c = (b << 30) | (b >>> 2);
+      // `>>> 0` necessary to avoid iOS/Safari 10 optimization bug
+      c = ((b << 30) | (b >>> 2)) >>> 0;
       b = a;
       a = t;
     }
@@ -260,7 +262,8 @@ function _update(s, w, bytes) {
       t = ((a << 5) | (a >>> 27)) + f + e + 0x6ED9EBA1 + t;
       e = d;
       d = c;
-      c = (b << 30) | (b >>> 2);
+      // `>>> 0` necessary to avoid iOS/Safari 10 optimization bug
+      c = ((b << 30) | (b >>> 2)) >>> 0;
       b = a;
       a = t;
     }
@@ -272,7 +275,8 @@ function _update(s, w, bytes) {
       t = ((a << 5) | (a >>> 27)) + f + e + 0x6ED9EBA1 + t;
       e = d;
       d = c;
-      c = (b << 30) | (b >>> 2);
+      // `>>> 0` necessary to avoid iOS/Safari 10 optimization bug
+      c = ((b << 30) | (b >>> 2)) >>> 0;
       b = a;
       a = t;
     }
@@ -285,7 +289,8 @@ function _update(s, w, bytes) {
       t = ((a << 5) | (a >>> 27)) + f + e + 0x8F1BBCDC + t;
       e = d;
       d = c;
-      c = (b << 30) | (b >>> 2);
+      // `>>> 0` necessary to avoid iOS/Safari 10 optimization bug
+      c = ((b << 30) | (b >>> 2)) >>> 0;
       b = a;
       a = t;
     }
@@ -298,7 +303,8 @@ function _update(s, w, bytes) {
       t = ((a << 5) | (a >>> 27)) + f + e + 0xCA62C1D6 + t;
       e = d;
       d = c;
-      c = (b << 30) | (b >>> 2);
+      // `>>> 0` necessary to avoid iOS/Safari 10 optimization bug
+      c = ((b << 30) | (b >>> 2)) >>> 0;
       b = a;
       a = t;
     }

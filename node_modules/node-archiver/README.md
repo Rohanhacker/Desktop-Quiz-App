@@ -39,5 +39,5 @@ Release Notes
 **0.1.0** Initial Release  
 **0.1.1** Bug Fix  
 **0.2.0** Added `bin/create_dist` for easier integration into a build process.  
-
+**0.3.0** Dependency updates to latest fstream and tar.
 

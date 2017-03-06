@@ -202,16 +202,16 @@ sha512.create = function(algorithm) {
 
     // serialize message length in bits in big-endian order; since length
     // is stored in bytes we multiply by 8 and add carry from next int
-    var messageLength = forge.util.createBuffer();
     var next, carry;
     var bits = md.fullMessageLength[0] * 8;
-    for(var i = 0; i < md.fullMessageLength.length; ++i) {
+    for(var i = 0; i < md.fullMessageLength.length - 1; ++i) {
       next = md.fullMessageLength[i + 1] * 8;
       carry = (next / 0x100000000) >>> 0;
       bits += carry;
       finalBlock.putInt32(bits >>> 0);
-      bits = next;
+      bits = next >>> 0;
     }
+    finalBlock.putInt32(bits);
 
     var h = new Array(_h.length);
     for(var i = 0; i < _h.length; ++i) {
