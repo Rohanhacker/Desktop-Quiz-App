@@ -2,6 +2,14 @@
 
 Built with electron and have speech recognition and text to speech.
 
+![Image](https://raw.githubusercontent.com/Rohanhacker/Desktop-Quiz-App/master/screenshots/1.png)
+
+
+![Image](https://raw.githubusercontent.com/Rohanhacker/Desktop-Quiz-App/master/screenshots/2.png)
+
+
+![Image](https://raw.githubusercontent.com/Rohanhacker/Desktop-Quiz-App/master/screenshots/3.png)
+
 ## To run :
     npm install
     npm start
