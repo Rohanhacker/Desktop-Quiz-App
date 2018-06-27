@@ -1,14 +1,15 @@
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
+const duration = '15ms';
 
-// https://docs.google.com/spreadsheets/d/1U-kOR1u5QQ5AbEDY0TgRuQ2tbSKopER8ZRxBmcivBbY/edit
+// https://docs.google.com/spreadsheets/d/Your-sheets-id
 
 var dummyQuestions = [];
 function main() {
   var sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
-    key:'AIzaSyCJ5Assq_h4eAshZCxpiyNxH-rrwqOFef0',
-    spreadsheetId: '1U-kOR1u5QQ5AbEDY0TgRuQ2tbSKopER8ZRxBmcivBbY',
+    key:'Your GOOGLE SHEETS API KEY',
+    spreadsheetId: 'Your google sheets id',
     range: 'A:F',
   }, function(err, response) {
     if (err) {
@@ -230,7 +231,7 @@ main();
 
 $("#timer").timer({
     countdown: true,
-    duration: '15ms',
+    duration: duration,
     format: '%H:%M:%S',
     callback: function() {
         window.location = "results.html"
